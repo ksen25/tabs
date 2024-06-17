@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .active {
+            color: red; /* Цвет текста при активации */
+        }
+    </style>
+</head>
+<body>
+    <section id="navigation">
+        <img src="img/menu.png" alt="Навигация">
+    </section>
+    <section class="title">
+        <h1>Табы</h1>
+    </section>
+    <section id="tabs_descr">
+        <div class="tabs">
+            <div class="tab-btn js-tab">Таб 1</div>
+            <div class="tab-btn js-tab">Таб 2</div>
+            <div class="tab-btn js-tab">Таб 3</div>
+            <div class="tab-btn js-tab">Таб 4</div>
+        </div>
+        <div>
+            <div class="tab_contents js-contants" style="display: none;">
+                <ol>
+                    <li><span>Заголовок нумерованного списка 1</span></li>
+                    <ul>
+                        <li>Элемент 1</li>
+                        <li>Элемент 2</li>
+                        <li>Элемент 3</li>
+                    </ul>
+                    <li><span>Заголовок нумерованного списка 1</span></li>
+                    <ul>
+                        <li>Элемент 1</li>
+                        <li>Элемент 2</li>
+                        <li>Элемент 3</li>
+                        <li>Элемент 4</li>
+                    </ul>
+                    <li><span>Заголовок нумерованного списка 1</span></li>
+                    <ul>
+                        <li>Элемент 1</li>
+                        <li>Элемент 2</li>
+                        <li>Элемент 3</li>
+                    </ul>
+                </ol>
+            </div>
+            <div class="tab_contents js-contants" style="display: none;">
+                <ol>
+                    <li><span>Заголовок нумерованного списка 2</span></li>
+                    <ul>
+                        <li>Элемент 1</li>
+                        <li>Элемент 2</li>
+                        <li>Элемент 3</li>
+                    </ul>
+                    <li><span>Заголовок нумерованного списка 2</span></li>
+                    <ul>
+                        <li>Элемент 1</li>
+                        <li>Элемент 2</li>
+                        <li>Элемент 3</li>
+                        <li>Элемент 4</li>
+                    </ul>
+                    <li><span>Заголовок нумерованного списка 2</span></li>
+                    <ul>
+                        <li>Элемент 1</li>
+                        <li>Элемент 2</li>
+                        <li>Элемент 3</li>
+                    </ul>
+                </ol>
+            </div>
+            <div class="tab_contents js-contants" style="display: none;">
+                <ol>
+                    <li><span>Заголовок нумерованного списка 3</span></li>
+                    <ul>
+                        <li>Элемент 1</li>
+                        <li>Элемент 2</li>
+                        <li>Элемент 3</li>
+                    </ul>
+                    <li><span>Заголовок нумерованного списка 3</span></li>
+                    <ul>
+                        <li>Элемент 1</li>
+                        <li>Элемент 2</li>
+                        <li>Элемент 3</li>
+                        <li>Элемент 4</li>
+                    </ul>
+                    <li><span>Заголовок нумерованного списка 3</span></li>
+                    <ul>
+                        <li>Элемент 1</li>
+                        <li>Элемент 2</ли>
+                        <li>Элемент 3</li>
+                    </ul>
+                </ol>
+            </div>
+            <div class="tab_contents js-contants" style="display: none;">
+                <ol>
+                    <li><span>Заголовок нумерованного списка 4</span></li>
+                    <ul><li>Элемент 1</li>
+                        <li>Элемент 2</ли>
+                        <li>Элемент 3</ли>
+                    </ul>
+                    <li><span>Заголовок нумерованного списка 4</span></ли>
+                    <ul>
+                        <li>Элемент 1</ли>
+                        <li>Элемент 2</ли>
+                        <li>Элемент 3</ли>
+                        <li>Элемент 4</ли>
+                    </ul>
+                    <li><span>Заголовок нумерованного списка 4</span></ли>
+                    <ul>
+                        <li>Элемент 1</ли>
+                        <li>Элемент 2</ли>
+                        <li>Элемент 3</ли>
+                    </ul>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <button class="continue" disabled>Продолжить</button>
+    <footer>
+        <img src="img/footer.png" alt="Подвал">
+    </footer>
+    <script>
+        let tabs = document.querySelectorAll('.js-tab');
+        let contents = document.querySelectorAll('.js-contants');
+        let button = document.querySelector('.continue');
+
+        tabs.forEach((item, idx) => {
+            item.addEventListener('click', () => {
+                tabs.forEach(tab => tab.classList.remove('active'));
+                contents.forEach(content => content.style.display = 'none');
+                item.classList.add('active');
+                contents[idx].style.display = 'block';
+                item.classList.add('clicked');
+                checkAllDivsClicked();
+            });
+        });
+        function checkAllDivsClicked() {
+            let allClicked = Array.from(tabs).every(tab => tab.classList.contains('clicked'));
+            if (allClicked) {
+                button.disabled = false; 
+            }
+        }
+    </script>
+</body>
+</html>
